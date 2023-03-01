@@ -6,7 +6,7 @@ Feature: Login Functionality
   Background:
     Given the user is on the login page
 
-  @ui
+  @smoke
   Scenario: Valid credentials
     When user enters valid username and password
     And clicks on the login button
