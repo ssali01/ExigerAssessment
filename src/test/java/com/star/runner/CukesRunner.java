@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/star/step_defs",
         dryRun = false,
-        tags = "@ui",
+        tags = "@smoke",
         publish = true
 
 )

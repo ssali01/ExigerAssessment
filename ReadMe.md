@@ -21,7 +21,7 @@ or simply click on this direct link: [link](https://github.com/ssali2022/ExigerA
 - To run the tests on your local machine, navigate to the root directory of the project and run the command on the terminal:
 ```mvn clean test```
 - 
-  To change `browser type` on your local using maven command:
+  To run tests on `virtual machine` from your local using maven command:
 ```
 mvn test -DBROWSER=remote-chrome
 ```
@@ -41,6 +41,67 @@ After running the tests, navigate to the target folder and open the cucumber-rep
 - Junit4
 - Maven
 - Java
+- 
+### **Core Dependencies:**
+```xml
+        <!-- This is for base support for anything we do with selenium-->
+<dependency>
+  <groupId>org.seleniumhq.selenium</groupId>
+  <artifactId>selenium-java</artifactId>
+  <version>3.141.59</version>
+</dependency>
+        <!-- This is the dependency to manage web driver-->
+<dependency>
+<groupId>io.github.bonigarcia</groupId>
+<artifactId>webdrivermanager</artifactId>
+<version>5.3.0</version>
+</dependency>
 
-### Prepared by: ###  
+        <!-- cucumber java -->
+<dependency>
+<groupId>io.cucumber</groupId>
+<artifactId>cucumber-java</artifactId>
+<version>7.3.2</version>
+</dependency>
+
+        <!-- cucumber with JUnit4-->
+<dependency>
+<groupId>io.cucumber</groupId>
+<artifactId>cucumber-junit</artifactId>
+<version>7.3.2</version>
+<scope>test</scope>
+</dependency>
+
+        <!-- for pretty report-->
+<dependency>
+<groupId>me.jvt.cucumber</groupId>
+<artifactId>reporting-plugin</artifactId>
+<version>7.3.0</version>
+</dependency>
+```
+
+### **Core Plugins:**
+```xml
+            <!-- to execute tests in parallel from maven command line-->
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <includes>
+                        <include>**/CukesRunner*.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+```    
+
+### Prepared by:  
 Salma Sali
